@@ -90,13 +90,4 @@ class HeadlinesFragment : Fragment() {
         }
     }
 
-    private fun setupHeadlinesRecycler() {
-        newsAdapter = NewsAdapter()
-        binding.recyclerHeadlines.apply {
-            adapter = newsAdapter
-            layoutManager = LinearLayoutManager(activity)
-            addOnScrollListener(this@HeadlinesFragment.scrollListener)
-
-        }
-    }
 }
