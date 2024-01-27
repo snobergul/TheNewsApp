@@ -36,9 +36,10 @@ class HeadlinesFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentHeadlinesBinding.bind(view)
 
-        itemHeadlinesError =view.findViewById(R.id.itemHeadlinesError)
+        itemHeadlinesError = view.findViewById(R.id.itemHeadlinesError)
 
-        val inflater = requireContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
+        val inflater =
+            requireContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
         val view: View = inflater.inflate(R.layout.item_error, null)
 
         retryButton = view.findViewById(R.id.retryButton)
@@ -55,20 +56,22 @@ class HeadlinesFragment : Fragment() {
             findNavController().navigate(R.id.action_headlinesFragment2_to_articleFragment, bundle)
         }
         newsViewModel.headlines.observe(viewLifecycleOwner, Observer { response ->
-            when(response){
-                is Resource.Success<*> ->{
+            when (response) {
+                is Resource.Success<*> -> {
                     hideProgressBar()
                     hideErrorMessage()
                     response.data?.let { newsResponse ->
                         newsAdapter.differ.submitList(newsResponse.articles.toList())
-                        val totalPages = newsResponse.totalResults / com.example.thenewsapp.util.Constants.QUERY_PAGE_SIZE + 2
+                        val totalPages =
+                            newsResponse.totalResults / com.example.thenewsapp.util.Constants.QUERY_PAGE_SIZE + 2
                         isLastPage = newsViewModel.headlinesPage == totalPages
-                        if (isLastPage){
+                        if (isLastPage) {
                             binding.recyclerHeadlines.setPadding(0, 0, 0, 0)
                         }
                     }
 
                 }
+
                 is Resource.Error<*> -> {
 
                     hideProgressBar()
@@ -78,6 +81,7 @@ class HeadlinesFragment : Fragment() {
                     }
 
                 }
+
                 is Resource.Loading<*> -> {
                     showProgressBar()
 
@@ -85,7 +89,7 @@ class HeadlinesFragment : Fragment() {
             }
         })
 
-        retryButton.setOnClickListener(){
+        retryButton.setOnClickListener() {
             newsViewModel.getHeadlines("pk")
         }
     }
@@ -148,6 +152,7 @@ class HeadlinesFragment : Fragment() {
             }
         }
     }
+
     private fun setupHeadlinesRecycler() {
         newsAdapter = NewsAdapter()
         binding.recyclerHeadlines.apply {
