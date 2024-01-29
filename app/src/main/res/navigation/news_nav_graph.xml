@@ -7,12 +7,17 @@
 
     <fragment
         android:id="@+id/articleFragment"
-        android:name="com.example.thenewsapp.ui.fragments.ArticleFragment"
+        android:name="com.example.thenewsapp.ui.main.fragments.ArticleFragment"
         android:label="fragment_article"
-        tools:layout="@layout/fragment_article" />
+        tools:layout="@layout/fragment_article">
+
+        <argument
+            android:name="article"
+            app:argType="com.example.thenewsapp.ui.model.Article"/>
+    </fragment>
     <fragment
         android:id="@+id/favouritesFragment2"
-        android:name="com.example.thenewsapp.ui.fragments.FavouritesFragment"
+        android:name="com.example.thenewsapp.ui.main.fragments.FavouritesFragment"
         android:label="fragment_favourites"
         tools:layout="@layout/fragment_favourites" >
         <action
@@ -21,7 +26,7 @@
     </fragment>
     <fragment
         android:id="@+id/headlinesFragment2"
-        android:name="com.example.thenewsapp.ui.fragments.HeadlinesFragment"
+        android:name="com.example.thenewsapp.ui.main.fragments.HeadlinesFragment"
         android:label="fragment_headlines"
         tools:layout="@layout/fragment_headlines" >
         <action
@@ -30,7 +35,7 @@
     </fragment>
     <fragment
         android:id="@+id/searchFragment2"
-        android:name="com.example.thenewsapp.ui.fragments.SearchFragment"
+        android:name="com.example.thenewsapp.ui.main.fragments.SearchFragment"
         android:label="fragment_search"
         tools:layout="@layout/fragment_search" >
         <action
