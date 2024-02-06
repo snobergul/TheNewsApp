@@ -90,7 +90,7 @@ class HeadlinesFragment : Fragment(R.layout.fragment_headlines) {
         })
 
         retryButton.setOnClickListener() {
-            newsViewModel.getHeadlines("pk")
+            newsViewModel.getHeadlines("us")
         }
     }
 
